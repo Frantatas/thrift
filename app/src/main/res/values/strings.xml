@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">THRIFT</string>
+    <string name="app_name">THRIFT!</string>
+    <string name="welcome_title">THRIFT!</string>
+    <string name="welcome_subtitle">buy, browse, and swap secondhand fits</string>
+    <string name="btn_login">log in</string>
+    <string name="btn_signup">sign up</string>
 </resources>

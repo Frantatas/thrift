@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_main">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/tvUploadTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="upload item"
+                android:textColor="@color/text_main"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvUploadSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="publish a thrift piece to your profile"
+                android:textColor="@color/text_main"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="item image"
+                    android:textColor="@color/text_main"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/ivUploadPreview"
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/accent_pink"
+                    android:contentDescription="@string/app_name"
+                    android:padding="18dp"
+                    android:scaleType="centerInside"
+                    android:src="@mipmap/ic_launcher" />
+
+                <Button
+                    android:id="@+id/btnChooseImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/button_white"
+                    android:text="choose image"
+                    android:textAllCaps="false"
+                    android:textColor="@color/outline"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:text="item name"
+                    android:textColor="@color/text_main"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etItemName"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/button_white"
+                    android:hint="enter item name"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:textColor="@color/text_main"
+                    android:textColorHint="@color/text_main" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:text="category"
+                    android:textColor="@color/text_main"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/button_white"
+                    android:hint="ex. hoodie, skirt, jacket"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:textColor="@color/text_main"
+                    android:textColorHint="@color/text_main" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:text="size"
+                    android:textColor="@color/text_main"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etSize"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/button_white"
+                    android:hint="ex. small, medium, large"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:textColor="@color/text_main"
+                    android:textColorHint="@color/text_main" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:text="condition"
+                    android:textColor="@color/text_main"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etCondition"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/button_white"
+                    android:hint="ex. 8/10"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:textColor="@color/text_main"
+                    android:textColorHint="@color/text_main" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:text="price"
+                    android:textColor="@color/text_main"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/button_white"
+                    android:hint="enter price"
+                    android:inputType="number"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:textColor="@color/text_main"
+                    android:textColorHint="@color/text_main" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:text="description"
+                    android:textColor="@color/text_main"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/button_white"
+                    android:gravity="top|start"
+                    android:hint="write a short description"
+                    android:inputType="textMultiLine"
+                    android:padding="14dp"
+                    android:textColor="@color/text_main"
+                    android:textColorHint="@color/text_main" />
+
+                <Button
+                    android:id="@+id/btnPublishItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="20dp"
+                    android:text="publish item"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    android:textColor="@color/outline"
+                    android:background="@drawable/button_yellow" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="90dp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/bottomNavBarUpload"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/floating_nav_bg"
+        android:elevation="6dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp">
+
+        <ImageButton
+            android:id="@+id/navHomeUpload"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Home"
+            android:padding="6dp"
+            android:src="@drawable/ic_home" />
+
+        <ImageButton
+            android:id="@+id/navSwapUpload"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="16dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Swap"
+            android:padding="6dp"
+            android:src="@drawable/ic_swap" />
+
+        <ImageButton
+            android:id="@+id/navCartUpload"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="16dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Cart"
+            android:padding="6dp"
+            android:src="@drawable/ic_cart" />
+
+        <ImageButton
+            android:id="@+id/navProfileUpload"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="16dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Profile"
+            android:padding="6dp"
+            android:src="@drawable/ic_profile" />
+    </LinearLayout>
+
+</FrameLayout>

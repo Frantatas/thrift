@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_main">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- TITLE -->
+            <TextView
+                android:id="@+id/tvSelectSwapTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="select your item"
+                android:textColor="@color/text_main"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvSelectSwapSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="choose one of your published items to offer for swap"
+                android:textColor="@color/text_main"
+                android:textSize="14sp" />
+
+            <!-- ITEM 1 -->
+            <LinearLayout
+                android:id="@+id/cardSelectItemOne"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:background="@color/accent_blue"
+                    android:contentDescription="@string/app_name"
+                    android:padding="16dp"
+                    android:scaleType="centerInside"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Cropped Knit Sweater"
+                    android:textColor="@color/text_main"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Size: Medium"
+                    android:textColor="@color/text_main" />
+
+                <RadioButton
+                    android:id="@+id/rbSelectItemOne"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="select this item"
+                    android:textColor="@color/text_main" />
+            </LinearLayout>
+
+            <!-- ITEM 2 -->
+            <LinearLayout
+                android:id="@+id/cardSelectItemTwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/rounded_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:background="@color/accent_pink"
+                    android:contentDescription="@string/app_name"
+                    android:padding="16dp"
+                    android:scaleType="centerInside"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Denim Mini Skirt"
+                    android:textColor="@color/text_main"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Size: Small"
+                    android:textColor="@color/text_main" />
+
+                <RadioButton
+                    android:id="@+id/rbSelectItemTwo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="select this item"
+                    android:textColor="@color/text_main" />
+            </LinearLayout>
+
+            <!-- ITEM 3 -->
+            <LinearLayout
+                android:id="@+id/cardSelectItemThree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/rounded_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:background="@color/accent_green"
+                    android:contentDescription="@string/app_name"
+                    android:padding="16dp"
+                    android:scaleType="centerInside"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Plaid Overshirt"
+                    android:textColor="@color/text_main"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Size: Large"
+                    android:textColor="@color/text_main" />
+
+                <RadioButton
+                    android:id="@+id/rbSelectItemThree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="select this item"
+                    android:textColor="@color/text_main" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnSendSwapRequest"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="90dp"
+                android:background="@drawable/button_yellow"
+                android:text="send swap request"
+                android:textAllCaps="false"
+                android:textColor="@color/outline"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- FLOATING NAV -->
+    <LinearLayout
+        android:id="@+id/bottomNavBarSelectSwap"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/floating_nav_bg"
+        android:elevation="6dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp">
+
+        <ImageButton
+            android:id="@+id/navHomeSelectSwap"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Home"
+            android:padding="6dp"
+            android:src="@drawable/ic_home" />
+
+        <ImageButton
+            android:id="@+id/navSwapSelectSwap"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="16dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Swap"
+            android:padding="6dp"
+            android:src="@drawable/ic_swap" />
+
+        <ImageButton
+            android:id="@+id/navCartSelectSwap"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="16dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Cart"
+            android:padding="6dp"
+            android:src="@drawable/ic_cart" />
+
+        <ImageButton
+            android:id="@+id/navProfileSelectSwap"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="16dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Profile"
+            android:padding="6dp"
+            android:src="@drawable/ic_profile" />
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_main">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- TOP BAR -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="profile"
+                    android:textColor="@color/text_main"
+                    android:textSize="26sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- PROFILE CARD -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_card"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <ImageView
+                    android:id="@+id/ivUserPhoto"
+                    android:layout_width="88dp"
+                    android:layout_height="88dp"
+                    android:background="@drawable/rounded_card"
+                    android:contentDescription="@string/app_name"
+                    android:padding="12dp"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/tvUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Fran"
+                    android:textColor="@color/text_main"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvUserHandle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@Frantatas"
+                    android:textColor="@color/text_main"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvUserBio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="collector of cute thrift finds and vintage pieces"
+                    android:textColor="@color/text_main"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/btnLogout"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/button_white"
+                    android:text="log out"
+                    android:textAllCaps="false"
+                    android:textColor="@color/outline"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <!-- ACTION BUTTONS -->
+            <Button
+                android:id="@+id/btnUploadNewItem"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/button_yellow"
+                android:text="upload new item"
+                android:textAllCaps="false"
+                android:textColor="@color/outline"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnMySwapListings"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_white"
+                android:text="my swap listings"
+                android:textAllCaps="false"
+                android:textColor="@color/outline"
+                android:textStyle="bold" />
+
+            <!-- PUBLISHED ITEMS TITLE -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="my published items"
+                android:textColor="@color/text_main"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- ROW 1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/cardPublishedOne"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_card"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="@color/accent_blue"
+                        android:contentDescription="@string/app_name"
+                        android:padding="12dp"
+                        android:scaleType="centerInside"
+                        android:src="@mipmap/ic_launcher" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="Cropped Knit Sweater"
+                        android:textColor="@color/text_main"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="for swap"
+                        android:textColor="@color/text_main" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/cardPublishedTwo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/rounded_card"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="@color/accent_pink"
+                        android:contentDescription="@string/app_name"
+                        android:padding="12dp"
+                        android:scaleType="centerInside"
+                        android:src="@mipmap/ic_launcher" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="Denim Mini Skirt"
+                        android:textColor="@color/text_main"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="published"
+                        android:textColor="@color/text_main" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ROW 2 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="90dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/cardPublishedThree"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_card"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="@color/accent_green"
+                        android:contentDescription="@string/app_name"
+                        android:padding="12dp"
+                        android:scaleType="centerInside"
+                        android:src="@mipmap/ic_launcher" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="Plaid Overshirt"
+                        android:textColor="@color/text_main"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="for swap"
+                        android:textColor="@color/text_main" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/cardPublishedFour"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/rounded_card"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:background="@color/accent_yellow"
+                        android:contentDescription="@string/app_name"
+                        android:padding="12dp"
+                        android:scaleType="centerInside"
+                        android:src="@mipmap/ic_launcher" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="Pleated Skirt"
+                        android:textColor="@color/text_main"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="published"
+                        android:textColor="@color/text_main" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- FLOATING NAV -->
+    <LinearLayout
+        android:id="@+id/bottomNavBarProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/floating_nav_bg"
+        android:elevation="6dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp">
+
+        <ImageButton
+            android:id="@+id/navHomeProfile"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Home"
+            android:padding="6dp"
+            android:src="@drawable/ic_home" />
+
+        <ImageButton
+            android:id="@+id/navSwapProfile"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="16dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Swap"
+            android:padding="6dp"
+            android:src="@drawable/ic_swap" />
+
+        <ImageButton
+            android:id="@+id/navCartProfile"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="16dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Cart"
+            android:padding="6dp"
+            android:src="@drawable/ic_cart" />
+
+        <ImageButton
+            android:id="@+id/navProfileProfile"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="16dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Profile"
+            android:padding="6dp"
+            android:src="@drawable/ic_profile" />
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_main">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/tvSwapTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="swap marketplace"
+                android:textColor="@color/text_main"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvSwapSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="trade pieces with other users"
+                android:textColor="@color/text_main"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvSwapCategoryLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="categories"
+                android:textColor="@color/text_main"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnSwapCatAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:background="@drawable/button_yellow"
+                        android:text="all"
+                        android:textAllCaps="false"
+                        android:textColor="@color/outline"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btnSwapCatTops"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/button_white"
+                        android:text="tops"
+                        android:textAllCaps="false"
+                        android:textColor="@color/outline"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btnSwapCatBottoms"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/button_white"
+                        android:text="bottoms"
+                        android:textAllCaps="false"
+                        android:textColor="@color/outline"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btnSwapCatJackets"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/button_white"
+                        android:text="jackets"
+                        android:textAllCaps="false"
+                        android:textColor="@color/outline"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btnSwapCatSkirts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/button_white"
+                        android:text="skirts"
+                        android:textAllCaps="false"
+                        android:textColor="@color/outline"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btnSwapCatAccessories"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/button_white"
+                        android:text="accessories"
+                        android:textAllCaps="false"
+                        android:textColor="@color/outline"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:background="@color/accent_blue"
+                    android:contentDescription="@string/app_name"
+                    android:padding="16dp"
+                    android:scaleType="centerInside"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Cropped Knit Sweater"
+                    android:textColor="@color/text_main"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Size: Medium"
+                    android:textColor="@color/text_main" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Condition: 8/10"
+                    android:textColor="@color/text_main" />
+
+                <Button
+                    android:id="@+id/btnRequestSwapOne"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/button_yellow"
+                    android:text="request swap"
+                    android:textAllCaps="false"
+                    android:textColor="@color/outline"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/rounded_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:background="@color/accent_pink"
+                    android:contentDescription="@string/app_name"
+                    android:padding="16dp"
+                    android:scaleType="centerInside"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Denim Mini Skirt"
+                    android:textColor="@color/text_main"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Size: Small"
+                    android:textColor="@color/text_main" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Condition: 9/10"
+                    android:textColor="@color/text_main" />
+
+                <Button
+                    android:id="@+id/btnRequestSwapTwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/button_yellow"
+                    android:text="request swap"
+                    android:textAllCaps="false"
+                    android:textColor="@color/outline"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:layout_marginBottom="90dp"
+                android:background="@drawable/rounded_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:background="@color/accent_green"
+                    android:contentDescription="@string/app_name"
+                    android:padding="16dp"
+                    android:scaleType="centerInside"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Plaid Overshirt"
+                    android:textColor="@color/text_main"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Size: Large"
+                    android:textColor="@color/text_main" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Condition: 8/10"
+                    android:textColor="@color/text_main" />
+
+                <Button
+                    android:id="@+id/btnRequestSwapThree"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/button_yellow"
+                    android:text="request swap"
+                    android:textAllCaps="false"
+                    android:textColor="@color/outline"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/bottomNavBarSwap"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/floating_nav_bg"
+        android:elevation="6dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp">
+
+        <ImageButton
+            android:id="@+id/navHomeSwap"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Home"
+            android:padding="6dp"
+            android:src="@drawable/ic_home" />
+
+        <ImageButton
+            android:id="@+id/navSwapSwap"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="16dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Swap"
+            android:padding="6dp"
+            android:src="@drawable/ic_swap" />
+
+        <ImageButton
+            android:id="@+id/navCartSwap"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="16dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Cart"
+            android:padding="6dp"
+            android:src="@drawable/ic_cart" />
+
+        <ImageButton
+            android:id="@+id/navProfileSwap"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="16dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Profile"
+            android:padding="6dp"
+            android:src="@drawable/ic_profile" />
+    </LinearLayout>
+
+</FrameLayout>
