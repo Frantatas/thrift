@@ -24,6 +24,11 @@ class SelectSwapItemActivity : AppCompatActivity() {
         val navCartSelectSwap = findViewById<ImageButton>(R.id.navCartSelectSwap)
         val navProfileSelectSwap = findViewById<ImageButton>(R.id.navProfileSelectSwap)
 
+        val requestedItemName = intent.getStringExtra("requestedItemName") ?: "Requested Item"
+        val requestedItemSize = intent.getStringExtra("requestedItemSize") ?: "N/A"
+        val requestedItemCondition = intent.getStringExtra("requestedItemCondition") ?: "N/A"
+        val requestedItemImage = intent.getIntExtra("requestedItemImage", R.drawable.bape_hoodie)
+
         rbSelectItemOne.setOnClickListener {
             rbSelectItemTwo.isChecked = false
             rbSelectItemThree.isChecked = false
@@ -40,31 +45,58 @@ class SelectSwapItemActivity : AppCompatActivity() {
         }
 
         btnSendSwapRequest.setOnClickListener {
-            if (rbSelectItemOne.isChecked || rbSelectItemTwo.isChecked || rbSelectItemThree.isChecked) {
-                Toast.makeText(this, "Swap request sent", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Please select one of your items first", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, SwapReviewActivity::class.java)
+
+            intent.putExtra("requestedItemName", requestedItemName)
+            intent.putExtra("requestedItemSize", requestedItemSize)
+            intent.putExtra("requestedItemCondition", requestedItemCondition)
+            intent.putExtra("requestedItemImage", requestedItemImage)
+
+            when {
+                rbSelectItemOne.isChecked -> {
+                    intent.putExtra("offeredItemName", "Cropped Knit Sweater")
+                    intent.putExtra("offeredItemSize", "Medium")
+                    intent.putExtra("offeredItemCondition", "8/10")
+                    intent.putExtra("offeredItemImage", R.drawable.red_cropped_polo)
+                    startActivity(intent)
+                }
+
+                rbSelectItemTwo.isChecked -> {
+                    intent.putExtra("offeredItemName", "Denim Mini Skirt")
+                    intent.putExtra("offeredItemSize", "Small")
+                    intent.putExtra("offeredItemCondition", "9/10")
+                    intent.putExtra("offeredItemImage", R.drawable.low_rise_jeans)
+                    startActivity(intent)
+                }
+
+                rbSelectItemThree.isChecked -> {
+                    intent.putExtra("offeredItemName", "Plaid Overshirt")
+                    intent.putExtra("offeredItemSize", "Large")
+                    intent.putExtra("offeredItemCondition", "8/10")
+                    intent.putExtra("offeredItemImage", R.drawable.ny_shirt)
+                    startActivity(intent)
+                }
+
+                else -> {
+                    Toast.makeText(this, "Please select one of your items first", Toast.LENGTH_SHORT).show()
+                }
             }
         }
 
         navHomeSelectSwap.setOnClickListener {
-            val intent = Intent(this, DashboardActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, DashboardActivity::class.java))
         }
 
         navSwapSelectSwap.setOnClickListener {
-            val intent = Intent(this, SwapActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, SwapActivity::class.java))
         }
 
         navCartSelectSwap.setOnClickListener {
-            val intent = Intent(this, CartActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, CartActivity::class.java))
         }
 
         navProfileSelectSwap.setOnClickListener {
-            val intent = Intent(this, ProfileActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, ProfileActivity::class.java))
         }
     }
 }

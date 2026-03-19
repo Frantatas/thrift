@@ -30,11 +30,11 @@ class ItemDetailActivity : AppCompatActivity() {
         val navCartDetail = findViewById<ImageButton>(R.id.navCartDetail)
         val navProfileDetail = findViewById<ImageButton>(R.id.navProfileDetail)
 
-        val itemName = intent.getStringExtra("itemName")
-        val itemPrice = intent.getStringExtra("itemPrice")
-        val itemSize = intent.getStringExtra("itemSize")
-        val itemCondition = intent.getStringExtra("itemCondition")
-        val itemDescription = intent.getStringExtra("itemDescription")
+        val itemName = intent.getStringExtra("itemName") ?: "Unknown Item"
+        val itemPrice = intent.getStringExtra("itemPrice") ?: "₱0"
+        val itemSize = intent.getStringExtra("itemSize") ?: "N/A"
+        val itemCondition = intent.getStringExtra("itemCondition") ?: "N/A"
+        val itemDescription = intent.getStringExtra("itemDescription") ?: "No description available."
         val itemImage = intent.getIntExtra("itemImage", R.drawable.bape_hoodie)
 
         ivDetailImage.setImageResource(itemImage)
@@ -45,7 +45,18 @@ class ItemDetailActivity : AppCompatActivity() {
         tvDetailDescription.text = itemDescription
 
         btnAddToCart.setOnClickListener {
-            Toast.makeText(this, "Added to cart", Toast.LENGTH_SHORT).show()
+            val item = Item(
+                name = itemName,
+                price = itemPrice,
+                size = itemSize,
+                condition = itemCondition,
+                description = itemDescription,
+                imageResId = itemImage,
+                quantity = 1
+            )
+
+            CartManager.addItem(item)
+            Toast.makeText(this, "$itemName added to cart", Toast.LENGTH_SHORT).show()
         }
 
         btnRequestSwapDetail.setOnClickListener {

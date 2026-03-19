@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_main">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/tvMySwapListingsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="my swap listings"
+                android:textColor="@color/text_main"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvMySwapListingsSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="view the items you posted for swapping"
+                android:textColor="@color/text_main"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvEmptyListings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="No swap listings yet."
+                android:textColor="@color/text_main"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/listingsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="90dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/bottomNavBarMyListings"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/floating_nav_bg"
+        android:elevation="6dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp">
+
+        <ImageButton
+            android:id="@+id/navHomeMyListings"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Home"
+            android:padding="6dp"
+            android:src="@drawable/ic_home" />
+
+        <ImageButton
+            android:id="@+id/navSwapMyListings"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Swap"
+            android:padding="6dp"
+            android:src="@drawable/ic_swap" />
+
+        <ImageButton
+            android:id="@+id/navCartMyListings"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Cart"
+            android:padding="6dp"
+            android:src="@drawable/ic_cart" />
+
+        <ImageButton
+            android:id="@+id/navProfileMyListings"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Profile"
+            android:padding="6dp"
+            android:src="@drawable/ic_profile" />
+    </LinearLayout>
+
+</FrameLayout>

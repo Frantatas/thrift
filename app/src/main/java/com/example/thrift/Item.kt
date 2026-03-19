@@ -6,5 +6,6 @@ data class Item(
     val size: String,
     val condition: String,
     val description: String,
-    val imageResId: Int
+    val imageResId: Int,
+    var quantity: Int = 1
 )

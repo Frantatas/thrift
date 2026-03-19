@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_main">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/tvSwapReviewTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="swap review"
+                android:textColor="@color/text_main"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvSwapReviewSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="review both items before sending your request"
+                android:textColor="@color/text_main"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="requested item"
+                android:textColor="@color/text_main"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rounded_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/ivRequestedItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:background="@color/accent_pink"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/bape_hoodie" />
+
+                <TextView
+                    android:id="@+id/tvRequestedItemName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Requested Item"
+                    android:textColor="@color/text_main"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvRequestedItemSize"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Size: Medium"
+                    android:textColor="@color/text_main" />
+
+                <TextView
+                    android:id="@+id/tvRequestedItemCondition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Condition: 8/10"
+                    android:textColor="@color/text_main" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="your offered item"
+                android:textColor="@color/text_main"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rounded_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/ivOfferedItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:background="@color/accent_blue"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/bape_hoodie" />
+
+                <TextView
+                    android:id="@+id/tvOfferedItemName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Your Item"
+                    android:textColor="@color/text_main"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvOfferedItemSize"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Size: Medium"
+                    android:textColor="@color/text_main" />
+
+                <TextView
+                    android:id="@+id/tvOfferedItemCondition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Condition: 8/10"
+                    android:textColor="@color/text_main" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="message"
+                android:textColor="@color/text_main"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etSwapMessage"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginTop="10dp"
+                android:background="@android:drawable/edit_text"
+                android:gravity="top|start"
+                android:hint="write a short message for the owner"
+                android:inputType="textMultiLine"
+                android:padding="12dp"
+                android:textColor="@color/text_main"
+                android:textColorHint="@color/text_main" />
+
+            <Button
+                android:id="@+id/btnSendSwapRequest"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_yellow"
+                android:text="send swap request"
+                android:textAllCaps="false"
+                android:textColor="@color/outline"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="90dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/bottomNavBarSwapReview"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/floating_nav_bg"
+        android:elevation="6dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp">
+
+        <ImageButton
+            android:id="@+id/navHomeSwapReview"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Home"
+            android:padding="6dp"
+            android:src="@drawable/ic_home" />
+
+        <ImageButton
+            android:id="@+id/navSwapSwapReview"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Swap"
+            android:padding="6dp"
+            android:src="@drawable/ic_swap" />
+
+        <ImageButton
+            android:id="@+id/navCartSwapReview"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Cart"
+            android:padding="6dp"
+            android:src="@drawable/ic_cart" />
+
+        <ImageButton
+            android:id="@+id/navProfileSwapReview"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Profile"
+            android:padding="6dp"
+            android:src="@drawable/ic_profile" />
+    </LinearLayout>
+
+</FrameLayout>

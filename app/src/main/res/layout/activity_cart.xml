@@ -9,7 +9,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!-- SCROLLABLE CART ITEMS -->
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -17,6 +16,7 @@
             android:fillViewport="true">
 
             <LinearLayout
+                android:id="@+id/cartContentLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -40,87 +40,23 @@
                     android:textColor="@color/text_main"
                     android:textSize="14sp" />
 
-                <!-- ITEM 1 -->
                 <LinearLayout
+                    android:id="@+id/cartItemsContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:background="@drawable/rounded_card"
-                    android:orientation="vertical"
-                    android:padding="16dp">
+                    android:orientation="vertical" />
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="150dp"
-                        android:background="@color/accent_green"
-                        android:contentDescription="@string/app_name"
-                        android:padding="16dp"
-                        android:scaleType="centerInside"
-                        android:src="@mipmap/ic_launcher" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Vintage Oversized Hoodie"
-                        android:textColor="@color/text_main"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="₱850"
-                        android:textColor="@color/text_main" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Quantity: 1"
-                        android:textColor="@color/text_main" />
-                </LinearLayout>
-
-                <!-- ITEM 2 -->
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/tvEmptyCart"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
-                    android:background="@drawable/rounded_card"
-                    android:orientation="vertical"
-                    android:padding="16dp">
+                    android:layout_marginTop="20dp"
+                    android:text="Your cart is empty."
+                    android:textColor="@color/text_main"
+                    android:textSize="16sp"
+                    android:visibility="gone" />
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="150dp"
-                        android:background="@color/accent_pink"
-                        android:contentDescription="@string/app_name"
-                        android:padding="16dp"
-                        android:scaleType="centerInside"
-                        android:src="@mipmap/ic_launcher" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Retro Denim Jacket"
-                        android:textColor="@color/text_main"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="₱1,100"
-                        android:textColor="@color/text_main" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Quantity: 1"
-                        android:textColor="@color/text_main" />
-                </LinearLayout>
-
-                <!-- EXTRA SPACE SO LAST ITEM ISN'T HIDDEN -->
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="16dp" />
@@ -128,7 +64,6 @@
             </LinearLayout>
         </ScrollView>
 
-        <!-- FIXED ORDER SUMMARY -->
         <LinearLayout
             android:id="@+id/orderSummaryCard"
             android:layout_width="match_parent"
@@ -154,21 +89,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Subtotal: ₱1,950"
+                android:text="Subtotal: ₱0"
                 android:textColor="@color/text_main" />
 
             <TextView
                 android:id="@+id/tvShipping"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Shipping: ₱80"
+                android:text="Shipping: ₱0"
                 android:textColor="@color/text_main" />
 
             <TextView
                 android:id="@+id/tvTotal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total: ₱2,030"
+                android:text="Total: ₱0"
                 android:textColor="@color/text_main"
                 android:textStyle="bold" />
 
@@ -185,7 +120,6 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!-- FLOATING NAV -->
     <LinearLayout
         android:id="@+id/bottomNavBarCart"
         android:layout_width="wrap_content"
@@ -201,8 +135,8 @@
 
         <ImageButton
             android:id="@+id/navHomeCart"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:background="@android:color/transparent"
             android:contentDescription="Home"
             android:padding="6dp"
@@ -210,8 +144,8 @@
 
         <ImageButton
             android:id="@+id/navSwapCart"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginStart="16dp"
             android:background="@android:color/transparent"
             android:contentDescription="Swap"
@@ -220,8 +154,8 @@
 
         <ImageButton
             android:id="@+id/navCartCart"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginStart="16dp"
             android:background="@android:color/transparent"
             android:contentDescription="Cart"
@@ -230,8 +164,8 @@
 
         <ImageButton
             android:id="@+id/navProfileCart"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginStart="16dp"
             android:background="@android:color/transparent"
             android:contentDescription="Profile"
