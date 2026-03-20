@@ -32,7 +32,6 @@
             android:exported="false" />
         <activity android:name=".SwapReviewActivity" />
         <activity android:name=".SwapRequestsActivity" />
-        <activity android:name=".SwapReviewActivity" />
         <activity android:name=".MySwapListingsActivity" />
         <activity
             android:name=".DashboardActivity"

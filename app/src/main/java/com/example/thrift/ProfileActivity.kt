@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class ProfileActivity : AppCompatActivity() {
@@ -14,6 +15,7 @@ class ProfileActivity : AppCompatActivity() {
 
         val btnUploadNewItem = findViewById<Button>(R.id.btnUploadNewItem)
         val btnMySwapListings = findViewById<Button>(R.id.btnMySwapListings)
+        val btnSwapRequests = findViewById<Button>(R.id.btnSwapRequests)
         val btnLogout = findViewById<Button>(R.id.btnLogout)
 
         val navHomeProfile = findViewById<ImageButton>(R.id.navHomeProfile)
@@ -27,6 +29,11 @@ class ProfileActivity : AppCompatActivity() {
 
         btnMySwapListings.setOnClickListener {
             startActivity(Intent(this, MySwapListingsActivity::class.java))
+        }
+
+        btnSwapRequests.setOnClickListener {
+            Toast.makeText(this, "Opening swap requests...", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, SwapRequestsActivity::class.java))
         }
 
         btnLogout.setOnClickListener {

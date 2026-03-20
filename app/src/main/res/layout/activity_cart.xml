@@ -16,7 +16,6 @@
             android:fillViewport="true">
 
             <LinearLayout
-                android:id="@+id/cartContentLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -26,7 +25,7 @@
                     android:id="@+id/tvCartTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="my cart"
+                    android:text="@string/cart_title"
                     android:textColor="@color/text_main"
                     android:textSize="28sp"
                     android:textStyle="bold" />
@@ -36,7 +35,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:text="items ready for checkout"
+                    android:text="@string/cart_subtitle"
                     android:textColor="@color/text_main"
                     android:textSize="14sp" />
 
@@ -52,7 +51,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Your cart is empty."
+                    android:text="@string/cart_empty"
                     android:textColor="@color/text_main"
                     android:textSize="16sp"
                     android:visibility="gone" />
@@ -60,7 +59,6 @@
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="16dp" />
-
             </LinearLayout>
         </ScrollView>
 
@@ -79,7 +77,7 @@
                 android:id="@+id/tvOrderSummaryTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="order summary"
+                android:text="@string/order_summary"
                 android:textColor="@color/text_main"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -89,21 +87,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Subtotal: ₱0"
+                android:text="@string/subtotal_default"
                 android:textColor="@color/text_main" />
 
             <TextView
                 android:id="@+id/tvShipping"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Shipping: ₱0"
+                android:text="@string/shipping_default"
                 android:textColor="@color/text_main" />
 
             <TextView
                 android:id="@+id/tvTotal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total: ₱0"
+                android:text="@string/total_default"
                 android:textColor="@color/text_main"
                 android:textStyle="bold" />
 
@@ -113,7 +111,7 @@
                 android:layout_height="48dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/button_yellow"
-                android:text="checkout"
+                android:text="@string/checkout"
                 android:textAllCaps="false"
                 android:textColor="@color/outline"
                 android:textStyle="bold" />
@@ -138,7 +136,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="@android:color/transparent"
-            android:contentDescription="Home"
+            android:contentDescription="@string/nav_home"
             android:padding="6dp"
             android:src="@drawable/ic_home" />
 
@@ -148,7 +146,7 @@
             android:layout_height="48dp"
             android:layout_marginStart="16dp"
             android:background="@android:color/transparent"
-            android:contentDescription="Swap"
+            android:contentDescription="@string/nav_swap"
             android:padding="6dp"
             android:src="@drawable/ic_swap" />
 
@@ -158,7 +156,7 @@
             android:layout_height="48dp"
             android:layout_marginStart="16dp"
             android:background="@android:color/transparent"
-            android:contentDescription="Cart"
+            android:contentDescription="@string/nav_cart"
             android:padding="6dp"
             android:src="@drawable/ic_cart" />
 
@@ -168,7 +166,7 @@
             android:layout_height="48dp"
             android:layout_marginStart="16dp"
             android:background="@android:color/transparent"
-            android:contentDescription="Profile"
+            android:contentDescription="@string/nav_profile"
             android:padding="6dp"
             android:src="@drawable/ic_profile" />
     </LinearLayout>

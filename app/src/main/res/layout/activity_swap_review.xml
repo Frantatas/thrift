@@ -19,7 +19,7 @@
                 android:id="@+id/tvSwapReviewTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="swap review"
+                android:text="@string/swap_review_title"
                 android:textColor="@color/text_main"
                 android:textSize="28sp"
                 android:textStyle="bold" />
@@ -29,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:text="review both items before sending your request"
+                android:text="@string/swap_review_subtitle"
                 android:textColor="@color/text_main"
                 android:textSize="14sp" />
 
@@ -37,7 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="requested item"
+                android:text="@string/requested_item_label"
                 android:textColor="@color/text_main"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -64,7 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Requested Item"
+                    android:text="@string/requested_item_default"
                     android:textColor="@color/text_main"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -73,14 +73,14 @@
                     android:id="@+id/tvRequestedItemSize"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Size: Medium"
+                    android:text="@string/size_medium"
                     android:textColor="@color/text_main" />
 
                 <TextView
                     android:id="@+id/tvRequestedItemCondition"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Condition: 8/10"
+                    android:text="@string/condition_8_10"
                     android:textColor="@color/text_main" />
             </LinearLayout>
 
@@ -88,7 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="your offered item"
+                android:text="@string/your_offered_item_label"
                 android:textColor="@color/text_main"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -115,7 +115,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Your Item"
+                    android:text="@string/your_item_default"
                     android:textColor="@color/text_main"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -124,14 +124,14 @@
                     android:id="@+id/tvOfferedItemSize"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Size: Medium"
+                    android:text="@string/size_medium"
                     android:textColor="@color/text_main" />
 
                 <TextView
                     android:id="@+id/tvOfferedItemCondition"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Condition: 8/10"
+                    android:text="@string/condition_8_10"
                     android:textColor="@color/text_main" />
             </LinearLayout>
 
@@ -139,7 +139,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="message"
+                android:text="@string/message_label"
                 android:textColor="@color/text_main"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -151,7 +151,8 @@
                 android:layout_marginTop="10dp"
                 android:background="@android:drawable/edit_text"
                 android:gravity="top|start"
-                android:hint="write a short message for the owner"
+                android:hint="@string/swap_message_hint"
+                android:importantForAutofill="no"
                 android:inputType="textMultiLine"
                 android:padding="12dp"
                 android:textColor="@color/text_main"
@@ -163,7 +164,7 @@
                 android:layout_height="52dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/button_yellow"
-                android:text="send swap request"
+                android:text="@string/send_swap_request"
                 android:textAllCaps="false"
                 android:textColor="@color/outline"
                 android:textStyle="bold" />
@@ -171,7 +172,6 @@
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="90dp" />
-
         </LinearLayout>
     </ScrollView>
 
@@ -193,7 +193,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="@android:color/transparent"
-            android:contentDescription="Home"
+            android:contentDescription="@string/nav_home"
             android:padding="6dp"
             android:src="@drawable/ic_home" />
 
@@ -203,7 +203,7 @@
             android:layout_height="48dp"
             android:layout_marginStart="16dp"
             android:background="@android:color/transparent"
-            android:contentDescription="Swap"
+            android:contentDescription="@string/nav_swap"
             android:padding="6dp"
             android:src="@drawable/ic_swap" />
 
@@ -213,7 +213,7 @@
             android:layout_height="48dp"
             android:layout_marginStart="16dp"
             android:background="@android:color/transparent"
-            android:contentDescription="Cart"
+            android:contentDescription="@string/nav_cart"
             android:padding="6dp"
             android:src="@drawable/ic_cart" />
 
@@ -223,7 +223,7 @@
             android:layout_height="48dp"
             android:layout_marginStart="16dp"
             android:background="@android:color/transparent"
-            android:contentDescription="Profile"
+            android:contentDescription="@string/nav_profile"
             android:padding="6dp"
             android:src="@drawable/ic_profile" />
     </LinearLayout>

@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 
 class SwapRequestsActivity : AppCompatActivity() {
 
@@ -33,7 +34,7 @@ class SwapRequestsActivity : AppCompatActivity() {
                 val card = LinearLayout(this).apply {
                     orientation = LinearLayout.VERTICAL
                     setPadding(16, 16, 16, 16)
-                    background = getDrawable(R.drawable.rounded_card)
+                    background = AppCompatResources.getDrawable(this@SwapRequestsActivity, R.drawable.rounded_card)
 
                     val params = LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
@@ -54,54 +55,60 @@ class SwapRequestsActivity : AppCompatActivity() {
                 }
 
                 val requestedTitle = TextView(this).apply {
-                    text = "Requested Item: ${request.requestedItemName}"
+                    text = getString(R.string.requested_item_format, request.requestedItemName)
                     textSize = 17f
                     setTextColor(getColor(R.color.text_main))
                     setPadding(0, 16, 0, 0)
                 }
 
                 val requestedMeta = TextView(this).apply {
-                    text = "Size: ${request.requestedItemSize} • Condition: ${request.requestedItemCondition}"
+                    text = getString(
+                        R.string.request_meta_format,
+                        request.requestedItemSize,
+                        request.requestedItemCondition
+                    )
                     textSize = 14f
                     setTextColor(getColor(R.color.text_main))
                 }
 
                 val offeredImage = ImageView(this).apply {
                     setImageResource(request.offeredItemImage)
-
                     val imageParams = LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         320
                     )
                     imageParams.topMargin = 20
                     layoutParams = imageParams
-
                     scaleType = ImageView.ScaleType.CENTER_CROP
                     setBackgroundColor(getColor(R.color.card_bg))
                 }
 
                 val offeredTitle = TextView(this).apply {
-                    text = "Your Offered Item: ${request.offeredItemName}"
+                    text = getString(R.string.offered_item_format, request.offeredItemName)
                     textSize = 17f
                     setTextColor(getColor(R.color.text_main))
                     setPadding(0, 16, 0, 0)
                 }
 
                 val offeredMeta = TextView(this).apply {
-                    text = "Size: ${request.offeredItemSize} • Condition: ${request.offeredItemCondition}"
+                    text = getString(
+                        R.string.request_meta_format,
+                        request.offeredItemSize,
+                        request.offeredItemCondition
+                    )
                     textSize = 14f
                     setTextColor(getColor(R.color.text_main))
                 }
 
                 val message = TextView(this).apply {
-                    text = "Message: ${request.message}"
+                    text = getString(R.string.request_message_format, request.message)
                     textSize = 14f
                     setTextColor(getColor(R.color.text_main))
                     setPadding(0, 16, 0, 0)
                 }
 
                 val status = TextView(this).apply {
-                    text = "Status: ${request.status}"
+                    text = getString(R.string.request_status_format, request.status)
                     textSize = 15f
                     setTextColor(getColor(R.color.text_main))
                     setPadding(0, 8, 0, 0)
