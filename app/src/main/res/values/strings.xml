@@ -1,7 +1,77 @@
 <resources>
     <string name="app_name">THRIFT!</string>
+
+    <!-- Welcome -->
     <string name="welcome_title">THRIFT!</string>
     <string name="welcome_subtitle">buy, browse, and swap secondhand fits</string>
     <string name="btn_login">log in</string>
     <string name="btn_signup">sign up</string>
+
+    <!-- Common nav / actions -->
+    <string name="nav_home">Home</string>
+    <string name="nav_swap">Swap</string>
+    <string name="nav_cart">Cart</string>
+    <string name="nav_profile">Profile</string>
+    <string name="logout">log out</string>
+    <string name="checkout">checkout</string>
+    <string name="order_summary">order summary</string>
+
+    <!-- Profile -->
+    <string name="profile_title">profile</string>
+    <string name="profile_subtitle">manage your thrift account</string>
+    <string name="user_name">Fran</string>
+    <string name="user_handle">\@thriftfran</string>
+    <string name="user_bio">collector of cute thrift finds and vintage pieces</string>
+    <string name="upload_new_item">upload new item</string>
+    <string name="my_swap_listings">my swap listings</string>
+    <string name="swap_requests">swap requests</string>
+    <string name="my_published_items">my published items</string>
+    <string name="cropped_knit_sweater">Cropped Knit Sweater</string>
+    <string name="denim_mini_skirt">Denim Mini Skirt</string>
+    <string name="plaid_overshirt">Plaid Overshirt</string>
+    <string name="pleated_skirt">Pleated Skirt</string>
+    <string name="for_swap">for swap</string>
+    <string name="published">published</string>
+
+    <!-- Cart -->
+    <string name="cart_title">my cart</string>
+    <string name="cart_subtitle">items ready for checkout</string>
+    <string name="cart_empty">Your cart is empty.</string>
+    <string name="subtotal_default">Subtotal: ₱0</string>
+    <string name="shipping_default">Shipping: ₱0</string>
+    <string name="total_default">Total: ₱0</string>
+    <string name="subtotal_format">Subtotal: ₱%1$d</string>
+    <string name="shipping_format">Shipping: ₱%1$d</string>
+    <string name="total_format">Total: ₱%1$d</string>
+    <string name="quantity_format">Quantity: %1$d</string>
+    <string name="item_total_format">Item Total: ₱%1$d</string>
+
+    <!-- Swap review -->
+    <string name="swap_review_title">swap review</string>
+    <string name="swap_review_subtitle">review both items before sending your request</string>
+    <string name="requested_item_label">requested item</string>
+    <string name="requested_item_default">Requested Item</string>
+    <string name="your_offered_item_label">your offered item</string>
+    <string name="your_item_default">Your Item</string>
+    <string name="message_label">message</string>
+    <string name="swap_message_hint">write a short message for the owner</string>
+    <string name="send_swap_request">send swap request</string>
+    <string name="size_medium">Size: Medium</string>
+    <string name="condition_8_10">Condition: 8/10</string>
+    <string name="condition_9_10">Condition: 9/10</string>
+    <string name="size_format">Size: %1$s</string>
+    <string name="condition_format">Condition: %1$s</string>
+
+    <!-- Swap requests -->
+    <string name="swap_requests_title">swap requests</string>
+    <string name="swap_requests_subtitle">view your submitted swap requests</string>
+    <string name="no_swap_requests">No swap requests yet.</string>
+    <string name="requested_item_format">Requested Item: %1$s</string>
+    <string name="offered_item_format">Your Offered Item: %1$s</string>
+    <string name="request_meta_format">Size: %1$s • Condition: %2$s</string>
+    <string name="request_message_format">Message: %1$s</string>
+    <string name="request_status_format">Status: %1$s</string>
+
+    <!-- Toasts -->
+    <string name="opening_swap_requests">Opening swap requests</string>
 </resources>
