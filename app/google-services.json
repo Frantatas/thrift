@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "951104449049",
+    "project_id": "thrift-mad-finals",
+    "storage_bucket": "thrift-mad-finals.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:951104449049:android:82a5a03d346f110ba41888",
+        "android_client_info": {
+          "package_name": "com.example.thrift"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCe5Q4PgNL6A3Gtcfr83W8IILCruxOE0nY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

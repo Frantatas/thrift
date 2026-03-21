@@ -1,0 +1,125 @@
+rules_version = '2';
+
+/**
+ * Firestore Security Rules for the Thrift Marketplace Application
+ *
+ * These rules enforce:
+ * 1. Users can only read and write their own data
+ * 2. Authenticated users can browse publicly available items
+ * 3. Users can only update swap requests involving themselves
+ * 4. Transaction records are accessible only to involved parties
+ * 5. All operations require authentication
+ */
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ==================== USERS COLLECTION ====================
+    // Each user document is identified by their Firebase UID
+    match /users/{uid} {
+      // Users can only read their own profile
+      allow read: if request.auth.uid == uid;
+
+      // Users can only write their own profile
+      allow write: if request.auth.uid == uid
+        && request.resource.data.uid == uid;
+
+      // Subcollection for transaction history
+      match /transactions/{transactionId} {
+        allow read: if request.auth.uid == uid;
+        allow write: if request.auth.uid == uid;
+      }
+
+      // Subcollection for swap history
+      match /swaps/{swapId} {
+        allow read: if request.auth.uid == uid;
+        allow write: if request.auth.uid == uid;
+      }
+    }
+
+    // ==================== ITEMS COLLECTION ====================
+    // All users can read available items
+    // Only sellers can create/update/delete their own items
+    match /items/{itemId} {
+      // Anyone can read available items
+      allow read: if resource.data.isAvailable == true || request.auth.uid == resource.data.sellerId;
+
+      // Only the seller can create, update, or delete their items
+      allow create: if request.auth.uid != null
+        && request.resource.data.sellerId == request.auth.uid
+        && request.resource.data.itemId == itemId;
+
+      allow update: if request.auth.uid == resource.data.sellerId;
+
+      allow delete: if request.auth.uid == resource.data.sellerId;
+    }
+
+    // ==================== TRANSACTIONS COLLECTION ====================
+    // Only involved parties (buyer/seller) can access transaction records
+    match /transactions/{transactionId} {
+      // Buyer and seller can read their own transactions
+      allow read: if request.auth.uid == resource.data.buyerId
+        || request.auth.uid == resource.data.sellerId;
+
+      // Only authenticated users can create transactions
+      allow create: if request.auth.uid != null
+        && request.resource.data.buyerId == request.auth.uid
+        && request.resource.data.transactionId == transactionId;
+
+      // Buyer and seller can update transaction status
+      allow update: if (request.auth.uid == resource.data.buyerId
+        || request.auth.uid == resource.data.sellerId);
+
+      // Only the buyer can delete their own transactions
+      allow delete: if request.auth.uid == resource.data.buyerId;
+    }
+
+    // ==================== SWAP ITEMS COLLECTION ====================
+    // All users can read available swap items
+    // Only item owners can manage their swap listings
+    match /swapItems/{swapItemId} {
+      // Anyone can read available swap items
+      allow read: if resource.data.isAvailable == true || request.auth.uid == resource.data.userId;
+
+      // Only the item owner can create swap items
+      allow create: if request.auth.uid != null
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.swapItemId == swapItemId;
+
+      // Only the item owner can update their swap items
+      allow update: if request.auth.uid == resource.data.userId;
+
+      // Only the item owner can delete their swap items
+      allow delete: if request.auth.uid == resource.data.userId;
+    }
+
+    // ==================== SWAP REQUESTS COLLECTION ====================
+    // Only involved parties can access swap requests
+    match /swapRequests/{requestId} {
+      // Requester and recipient can read the swap request
+      allow read: if request.auth.uid == resource.data.requesterId
+        || request.auth.uid == resource.data.recipientId;
+
+      // Only authenticated users can create swap requests
+      allow create: if request.auth.uid != null
+        && request.resource.data.requesterId == request.auth.uid
+        && request.resource.data.requestId == requestId;
+
+      // Both requester and recipient can update the status
+      allow update: if (request.auth.uid == resource.data.requesterId
+        || request.auth.uid == resource.data.recipientId)
+        && request.resource.data.status in ['Pending', 'Accepted', 'Declined', 'Completed'];
+
+      // Requester can delete their own pending requests
+      allow delete: if request.auth.uid == resource.data.requesterId
+        && resource.data.status == 'Pending';
+    }
+
+    // ==================== DENY ALL OTHER OPERATIONS ====================
+    // Explicit deny for any unmatched paths
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
+

@@ -9,12 +9,22 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import com.example.thrift.viewmodel.AuthViewModel
+import com.example.thrift.viewmodel.ItemViewModel
 
 class CartActivity : AppCompatActivity() {
+
+    private lateinit var itemViewModel: ItemViewModel
+    private lateinit var authViewModel: AuthViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cart)
+
+        // Initialize ViewModels
+        itemViewModel = ViewModelProvider(this).get(ItemViewModel::class.java)
+        authViewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
 
         val cartItemsContainer = findViewById<LinearLayout>(R.id.cartItemsContainer)
         val tvEmptyCart = findViewById<TextView>(R.id.tvEmptyCart)
@@ -28,77 +38,88 @@ class CartActivity : AppCompatActivity() {
         val navCartCart = findViewById<ImageButton>(R.id.navCartCart)
         val navProfileCart = findViewById<ImageButton>(R.id.navProfileCart)
 
-        cartItemsContainer.removeAllViews()
+        // Observe cart items
+        itemViewModel.allItems.observe(this) { items ->
+            // Filter only items in cart (you could have a separate cart LiveData)
+            val cartItems = CartManager.cartItems
 
-        if (CartManager.cartItems.isEmpty()) {
-            tvEmptyCart.visibility = TextView.VISIBLE
-        } else {
-            tvEmptyCart.visibility = TextView.GONE
+            cartItemsContainer.removeAllViews()
 
-            for (item in CartManager.cartItems) {
-                val card = LinearLayout(this).apply {
-                    orientation = LinearLayout.VERTICAL
-                    setPadding(16, 16, 16, 16)
-                    background = getDrawable(R.drawable.rounded_card)
+            if (cartItems.isEmpty()) {
+                tvEmptyCart.visibility = TextView.VISIBLE
+            } else {
+                tvEmptyCart.visibility = TextView.GONE
 
-                    val params = LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT
-                    )
-                    params.bottomMargin = 24
-                    layoutParams = params
+                for (item in cartItems) {
+                    val card = LinearLayout(this).apply {
+                        orientation = LinearLayout.VERTICAL
+                        setPadding(16, 16, 16, 16)
+                        background = getDrawable(R.drawable.rounded_card)
+
+                        val params = LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT
+                        )
+                        params.bottomMargin = 24
+                        layoutParams = params
+                    }
+
+                    val image = ImageView(this).apply {
+                        setImageResource(item.imageResId)
+                        layoutParams = LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.MATCH_PARENT,
+                            350
+                        )
+                        scaleType = ImageView.ScaleType.CENTER_CROP
+                        setBackgroundColor(getColor(R.color.card_bg))
+                    }
+
+                    val name = TextView(this).apply {
+                        text = item.name
+                        textSize = 17f
+                        setTextColor(getColor(R.color.text_main))
+                        setPadding(0, 16, 0, 0)
+                    }
+
+                    val price = TextView(this).apply {
+                        text = item.price
+                        textSize = 15f
+                        setTextColor(getColor(R.color.text_main))
+                    }
+
+                    val quantity = TextView(this).apply {
+                        text = "Quantity: ${item.quantity}"
+                        textSize = 15f
+                        setTextColor(getColor(R.color.text_main))
+                    }
+
+                    val itemTotal = TextView(this).apply {
+                        val numericPrice = item.price.replace("₱", "").replace(",", "").trim()
+                        val priceValue = numericPrice.toIntOrNull() ?: 0
+                        text = "Item Total: ₱${priceValue * item.quantity}"
+                        textSize = 15f
+                        setTextColor(getColor(R.color.text_main))
+                    }
+
+                    card.addView(image)
+                    card.addView(name)
+                    card.addView(price)
+                    card.addView(quantity)
+                    card.addView(itemTotal)
+
+                    cartItemsContainer.addView(card)
                 }
-
-                val image = ImageView(this).apply {
-                    setImageResource(item.imageResId)
-                    layoutParams = LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        350
-                    )
-                    scaleType = ImageView.ScaleType.CENTER_CROP
-                    setBackgroundColor(getColor(R.color.card_bg))
-                }
-
-                val name = TextView(this).apply {
-                    text = item.name
-                    textSize = 17f
-                    setTextColor(getColor(R.color.text_main))
-                    setPadding(0, 16, 0, 0)
-                }
-
-                val price = TextView(this).apply {
-                    text = item.price
-                    textSize = 15f
-                    setTextColor(getColor(R.color.text_main))
-                }
-
-                val quantity = TextView(this).apply {
-                    text = "Quantity: ${item.quantity}"
-                    textSize = 15f
-                    setTextColor(getColor(R.color.text_main))
-                }
-
-                val itemTotal = TextView(this).apply {
-                    val numericPrice = item.price.replace("₱", "").replace(",", "").trim()
-                    val priceValue = numericPrice.toIntOrNull() ?: 0
-                    text = "Item Total: ₱${priceValue * item.quantity}"
-                    textSize = 15f
-                    setTextColor(getColor(R.color.text_main))
-                }
-
-                card.addView(image)
-                card.addView(name)
-                card.addView(price)
-                card.addView(quantity)
-                card.addView(itemTotal)
-
-                cartItemsContainer.addView(card)
             }
+
+            updateCartTotals(tvSubtotal, tvShipping, tvTotal)
         }
 
-        tvSubtotal.text = "Subtotal: ₱${CartManager.getSubtotal()}"
-        tvShipping.text = "Shipping: ₱${CartManager.getShipping()}"
-        tvTotal.text = "Total: ₱${CartManager.getTotal()}"
+        // Observe errors
+        itemViewModel.errorMessage.observe(this) { message ->
+            if (!message.isNullOrEmpty()) {
+                Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+            }
+        }
 
         btnCheckout.setOnClickListener {
             if (CartManager.cartItems.isEmpty()) {
@@ -106,8 +127,8 @@ class CartActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Checkout complete", Toast.LENGTH_SHORT).show()
                 CartManager.clearCart()
-                startActivity(Intent(this, CartActivity::class.java))
-                finish()
+                // Refresh cart view
+                itemViewModel.loadAllItems()
             }
         }
 
@@ -126,5 +147,11 @@ class CartActivity : AppCompatActivity() {
         navProfileCart.setOnClickListener {
             startActivity(Intent(this, ProfileActivity::class.java))
         }
+    }
+
+    private fun updateCartTotals(tvSubtotal: TextView, tvShipping: TextView, tvTotal: TextView) {
+        tvSubtotal.text = "Subtotal: ₱${CartManager.getSubtotal()}"
+        tvShipping.text = "Shipping: ₱${CartManager.getShipping()}"
+        tvTotal.text = "Total: ₱${CartManager.getTotal()}"
     }
 }

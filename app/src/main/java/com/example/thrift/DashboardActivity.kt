@@ -3,19 +3,48 @@ package com.example.thrift
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.thrift.viewmodel.AuthViewModel
+import com.example.thrift.viewmodel.ItemViewModel
 
 class DashboardActivity : AppCompatActivity() {
+
+    private lateinit var itemViewModel: ItemViewModel
+    private lateinit var authViewModel: AuthViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
 
+        // Initialize ViewModels
+        itemViewModel = ViewModelProvider(this).get(ItemViewModel::class.java)
+        authViewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
+
         val recyclerItems = findViewById<RecyclerView>(R.id.recyclerItems)
 
-        val items = listOf(
+        // Check if user is authenticated
+        authViewModel.authState.observe(this) { state ->
+            when (state) {
+                is AuthViewModel.AuthState.Unauthenticated -> {
+                    Toast.makeText(this, "Please log in first", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+                is AuthViewModel.AuthState.Authenticated -> {
+                    // Load items from Firestore
+                    itemViewModel.loadAllItems()
+                }
+                else -> {} // Loading state
+            }
+        }
+
+        // Show mock data items for UI display
+        val mockItems = listOf(
             Item(
                 "BAPE Hoodie",
                 "₱850",
@@ -67,18 +96,18 @@ class DashboardActivity : AppCompatActivity() {
         )
 
         recyclerItems.layoutManager = GridLayoutManager(this, 2)
-
-        recyclerItems.adapter = ItemAdapter(items) { item ->
-            val intent = Intent(this, ItemDetailActivity::class.java)
-            intent.putExtra("itemName", item.name)
-            intent.putExtra("itemPrice", item.price)
-            intent.putExtra("itemSize", item.size)
-            intent.putExtra("itemCondition", item.condition)
-            intent.putExtra("itemDescription", item.description)
-            intent.putExtra("itemImage", item.imageResId)
-            startActivity(intent)
+        recyclerItems.adapter = ItemAdapter(mockItems) { item ->
+            navigateToItemDetail(item)
         }
 
+        // Observe errors
+        itemViewModel.errorMessage.observe(this) { message ->
+            if (!message.isNullOrEmpty()) {
+                Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        // Setup navigation
         val navHome = findViewById<ImageButton>(R.id.navHome)
         val navSwap = findViewById<ImageButton>(R.id.navSwap)
         val navCart = findViewById<ImageButton>(R.id.navCart)
@@ -99,5 +128,16 @@ class DashboardActivity : AppCompatActivity() {
         navProfile.setOnClickListener {
             startActivity(Intent(this, ProfileActivity::class.java))
         }
+    }
+
+    private fun navigateToItemDetail(item: Item) {
+        val intent = Intent(this, ItemDetailActivity::class.java)
+        intent.putExtra("itemName", item.name)
+        intent.putExtra("itemPrice", item.price)
+        intent.putExtra("itemSize", item.size)
+        intent.putExtra("itemCondition", item.condition)
+        intent.putExtra("itemDescription", item.description)
+        intent.putExtra("itemImage", item.imageResId)
+        startActivity(intent)
     }
 }
