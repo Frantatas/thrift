@@ -8,18 +8,20 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.thrift.viewmodel.AuthViewModel
+import com.example.thrift.viewmodel.SharedAuthViewModel
+import com.example.thrift.viewmodel.SharedAuthViewModelFactory
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var authViewModel: AuthViewModel
+    private lateinit var authViewModel: SharedAuthViewModel
+    private var hasNavigatedToDashboard = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        // Initialize ViewModel
-        authViewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
+        // Initialize SharedAuthViewModel using shared instance
+        authViewModel = SharedAuthViewModelFactory.getInstance()
 
         val etEmail = findViewById<EditText>(R.id.etEmail)
         val etPassword = findViewById<EditText>(R.id.etPassword)
@@ -27,21 +29,26 @@ class LoginActivity : AppCompatActivity() {
         val btnLoginNow = findViewById<Button>(R.id.btnLoginNow)
         val tvForgotPassword = findViewById<TextView>(R.id.tvForgotPassword)
 
-        // Observe authentication state
+        // Observe authentication state - ONLY trigger on explicit login, not on init
         authViewModel.authState.observe(this) { state ->
             when (state) {
-                is AuthViewModel.AuthState.Loading -> {
+                is SharedAuthViewModel.AuthState.Loading -> {
                     btnLoginNow.isEnabled = false
                     btnLoginNow.text = "Logging in..."
                 }
-                is AuthViewModel.AuthState.Authenticated -> {
+                is SharedAuthViewModel.AuthState.Authenticated -> {
                     btnLoginNow.isEnabled = true
                     btnLoginNow.text = "Login"
-                    val intent = Intent(this, DashboardActivity::class.java)
-                    startActivity(intent)
-                    finish()
+                    // Only navigate once to prevent duplicate transitions
+                    // But only if we actually just performed a login (not on init)
+                    if (!hasNavigatedToDashboard && etEmail.text.toString().isNotEmpty()) {
+                        hasNavigatedToDashboard = true
+                        val intent = Intent(this, DashboardActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
                 }
-                is AuthViewModel.AuthState.Unauthenticated -> {
+                is SharedAuthViewModel.AuthState.Unauthenticated -> {
                     btnLoginNow.isEnabled = true
                     btnLoginNow.text = "Login"
                 }
@@ -52,6 +59,8 @@ class LoginActivity : AppCompatActivity() {
         authViewModel.errorMessage.observe(this) { message ->
             if (!message.isNullOrEmpty()) {
                 Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                // Clear error after showing
+                authViewModel.clearError()
             }
         }
 

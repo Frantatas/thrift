@@ -6,7 +6,8 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.thrift.viewmodel.AuthViewModel
+import com.example.thrift.viewmodel.SharedAuthViewModel
+import com.example.thrift.viewmodel.SharedAuthViewModelFactory
 
 /**
  * MainActivity - Main entry point for the Thrift application.
@@ -21,9 +22,10 @@ import com.example.thrift.viewmodel.AuthViewModel
  */
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var authViewModel: AuthViewModel
+    private lateinit var authViewModel: SharedAuthViewModel
     private var btnLogin: Button? = null
     private var btnSignUp: Button? = null
+    private var hasNavigatedToDashboard = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,22 +38,30 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        // Initialize AuthViewModel
+        // Initialize SharedAuthViewModel using shared instance
         try {
-            authViewModel = ViewModelProvider(this)[AuthViewModel::class.java]
+            authViewModel = SharedAuthViewModelFactory.getInstance()
         } catch (e: Exception) {
             showError("Authentication initialization failed: ${e.message}")
             return
         }
 
         // Check if user is already logged in before setting up UI
+        // Only navigate once to prevent multiple refreshes
         authViewModel.authState.observe(this) { state ->
             when (state) {
-                is AuthViewModel.AuthState.Authenticated -> {
-                    navigateToDashboard()
+                is SharedAuthViewModel.AuthState.Authenticated -> {
+                    if (!hasNavigatedToDashboard) {
+                        hasNavigatedToDashboard = true
+                        navigateToDashboard()
+                    }
+                }
+                is SharedAuthViewModel.AuthState.Unauthenticated -> {
+                    // Reset flag when user is logged out - allows re-login
+                    hasNavigatedToDashboard = false
                 }
                 else -> {
-                    // Do nothing, let the UI display
+                    // Do nothing for Loading state
                 }
             }
         }
@@ -134,21 +144,6 @@ class MainActivity : AppCompatActivity() {
         } catch (e: Exception) {
             // Silently fail if Toast fails
             e.printStackTrace()
-        }
-    }
-
-    /**
-     * Check authentication state when activity resumes
-     */
-    override fun onResume() {
-        super.onResume()
-        try {
-            // If user logs in from another activity, redirect to dashboard
-            if (::authViewModel.isInitialized && authViewModel.authState.value == AuthViewModel.AuthState.Authenticated) {
-                navigateToDashboard()
-            }
-        } catch (e: Exception) {
-            showError("Error checking auth state: ${e.message}")
         }
     }
 }

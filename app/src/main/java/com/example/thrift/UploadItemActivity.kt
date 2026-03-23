@@ -9,22 +9,23 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.thrift.data.models.Item
-import com.example.thrift.viewmodel.AuthViewModel
+import com.example.thrift.viewmodel.SharedAuthViewModel
+import com.example.thrift.viewmodel.SharedAuthViewModelFactory
 import com.example.thrift.viewmodel.ItemViewModel
 import java.util.UUID
 
 class UploadItemActivity : AppCompatActivity() {
 
     private lateinit var itemViewModel: ItemViewModel
-    private lateinit var authViewModel: AuthViewModel
+    private lateinit var authViewModel: SharedAuthViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_upload_item)
 
-        // Initialize ViewModels
+        // Initialize ViewModels - use shared auth instance
         itemViewModel = ViewModelProvider(this).get(ItemViewModel::class.java)
-        authViewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
+        authViewModel = SharedAuthViewModelFactory.getInstance()
 
         val etItemName = findViewById<EditText>(R.id.etItemName)
         val btnChooseImage = findViewById<Button>(R.id.btnChooseImage)

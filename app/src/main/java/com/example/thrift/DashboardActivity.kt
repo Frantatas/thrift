@@ -8,34 +8,40 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.thrift.viewmodel.AuthViewModel
+import com.example.thrift.viewmodel.SharedAuthViewModel
+import com.example.thrift.viewmodel.SharedAuthViewModelFactory
 import com.example.thrift.viewmodel.ItemViewModel
 
 class DashboardActivity : AppCompatActivity() {
 
     private lateinit var itemViewModel: ItemViewModel
-    private lateinit var authViewModel: AuthViewModel
+    private lateinit var authViewModel: SharedAuthViewModel
+    private var hasNavigatedToLogin = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
 
-        // Initialize ViewModels
+        // Initialize ViewModels - use shared instance
         itemViewModel = ViewModelProvider(this).get(ItemViewModel::class.java)
-        authViewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
+        authViewModel = SharedAuthViewModelFactory.getInstance()
 
         val recyclerItems = findViewById<RecyclerView>(R.id.recyclerItems)
 
         // Check if user is authenticated
         authViewModel.authState.observe(this) { state ->
             when (state) {
-                is AuthViewModel.AuthState.Unauthenticated -> {
-                    Toast.makeText(this, "Please log in first", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, LoginActivity::class.java)
-                    startActivity(intent)
-                    finish()
+                is SharedAuthViewModel.AuthState.Unauthenticated -> {
+                    // Only navigate once to prevent multiple redirects
+                    if (!hasNavigatedToLogin) {
+                        hasNavigatedToLogin = true
+                        Toast.makeText(this, "Please log in first", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this, LoginActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
                 }
-                is AuthViewModel.AuthState.Authenticated -> {
+                is SharedAuthViewModel.AuthState.Authenticated -> {
                     // Load items from Firestore
                     itemViewModel.loadAllItems()
                 }
